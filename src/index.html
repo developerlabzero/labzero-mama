@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LabZero Mama</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Open-source maternal and newborn care simulation for health trainees.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <h1>LabZero <span>Mama</span></h1>
+      <p>Women's health: a clinic day</p>
+    </div>
+    <nav class="tabs" aria-label="Views">
+      <button type="button" data-view="case" aria-current="page">Case</button>
+      <button type="button" data-view="dash">Dashboard</button>
+      <button type="button" data-view="about">About</button>
+    </nav>
+  </header>
+
+  <div id="view-case">
+    <ol id="stepper" aria-label="Case progress"></ol>
+    <div class="grid">
+      <aside id="patient" aria-label="Patient summary"></aside>
+      <main id="stage"></main>
+    </div>
+  </div>
+
+  <div id="view-dash" hidden><div id="dash"></div></div>
+
+  <div id="view-about" hidden>
+    <div id="about">
+      <h2>About this prototype</h2>
+      <p>LabZero Mama is an open-source simulation for training nurses, midwives, doctors and pharmacists to recognise and manage dangerous conditions in pregnancy, birth and the newborn period. It runs in a browser and works offline.</p>
+      <p>The simulation opens on a busy public clinic on a Monday morning. Five women wait in the queue: severe pre-eclampsia at 34 weeks, endometriosis, cervical cancer in a woman living with HIV, intimate partner violence in early pregnancy, and severe depression in a 22-year-old medical student. Trainees follow each one from the file room and the nurse's vitals station to the clinic doctor and, where needed, the hospital.</p>
+      <p><strong>Safety by design.</strong> All patients are fictional. The patient can only say lines from her approved case script. The dialogue layer only chooses which approved line answers a question; scoring rules, not AI, decide whether an action was safe. Learner records stay on this device.</p>
+      <h3>Tuto, your tutor</h3>
+      <p>Choose a mode in the lobby. <strong>Learn with Tuto</strong> gives a briefing at every step, hints on request (a nudge, a bigger hint, then the answer) and a review after each step. <strong>Practice</strong> keeps the hints, but each costs 5 points. <strong>Assessment</strong> switches Tuto off. Tuto teaches only from the approved case content: the same reasons and explanations the scoring uses.</p>
+      <h3>Patient dialogue</h3>
+      <label class="check" for="set-voice"><input type="checkbox" id="set-voice"><span>Read the patient's replies aloud (device speech)</span></label>
+      <label class="check" for="set-llm"><input type="checkbox" id="set-llm"><span>Use a language model to match typed questions (optional; offline matching is used otherwise)</span></label>
+      <div class="field"><label for="set-endpoint">Chat completions endpoint</label><input id="set-endpoint" placeholder="https://your-model-host/v1/chat/completions"></div>
+      <div class="field"><label for="set-apiKey">API key (kept for this browser session only)</label><input id="set-apiKey" type="password" autocomplete="off"></div>
+      <div class="field"><label for="set-model">Model name</label><input id="set-model"></div>
+      <p class="hint">The language model receives only the trainee's question and the list of approved question topics. It never sees learner records and never writes the patient's words.</p>
+      <h3>Licences</h3>
+      <p>Code: MIT. Case content: CC BY 4.0. Built by Nothile Biolab (Pty) Ltd. Case content is a draft pending clinical validation and is not for clinical use.</p>
+    </div>
+  </div>
+
+  <footer>
+    <span>LabZero Mama v1.0 · Open source: code MIT, cases CC BY 4.0</span>
+    <span>Fictional cases for training only. Not for clinical use.</span>
+  </footer>
+</div>
+<script src="../cases/clinic-day.js"></script>
+<script src="../cases/cervical-cancer.js"></script>
+<script src="../cases/severe-preeclampsia.js"></script>
+<script src="../cases/endometriosis.js"></script>
+<script src="../cases/ipv-pregnancy.js"></script>
+<script src="../cases/depression-young-woman.js"></script>
+<script src="../cases/sudden-death-lobby.js"></script>
+<script src="../cases/stab-wound.js"></script>
+<script src="../cases/postpartum-psychosis.js"></script>
+<script src="../cases/unsafe-abortion.js"></script>
+<script src="../cases/teen-contraception.js"></script>
+<script src="../cases/teen-breech.js"></script>
+<script src="../cases/pph.js"></script>
+<script src="../cases/preterm-labour.js"></script>
+<script src="../cases/postnatal-depression.js"></script>
+<script src="../cases/gestational-diabetes.js"></script>
+<script src="../cases/tb-hiv-pregnancy.js"></script>
+<script src="intent.js"></script>
+<script src="resus.js"></script>
+<script src="drill.js"></script>
+<script src="tuto.js"></script>
+<script src="engine.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

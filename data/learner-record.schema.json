@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "labzero-mama/learner-record@0.2",
+  "title": "LabZero Mama learner record",
+  "description": "One record per completed case. Stored on the learner's device. Contains no patient data.",
+  "type": "object",
+  "required": ["schema", "sessionId", "caseId", "caseVersion", "role", "startedAt", "completedAt", "domainScores", "totalScore", "criticalErrors", "passed"],
+  "properties": {
+    "schema": { "const": "labzero-mama/learner-record@0.2" },
+    "sessionId": { "type": "string" },
+    "caseId": { "type": "string" },
+    "caseVersion": { "type": "string" },
+    "role": { "enum": ["Nursing and midwifery", "Medicine", "Pharmacy"] },
+    "startedAt": { "type": "string", "format": "date-time" },
+    "completedAt": { "type": "string", "format": "date-time" },
+    "durationSeconds": { "type": "integer", "minimum": 0 },
+    "choices": { "type": "object", "description": "The learner's selections at each step." },
+    "dialogue": { "type": "array", "items": { "type": "object", "properties": { "q": { "type": "string" }, "a": { "type": "string" }, "intent": { "type": ["string", "null"] }, "method": { "type": "string" } } } },
+    "domainScores": {
+      "type": "object",
+      "properties": {
+        "prioritisation": { "type": "integer" }, "history": { "type": "integer" }, "assessment": { "type": "integer" },
+        "investigations": { "type": "integer" }, "interpretation": { "type": "integer" }, "diagnosis": { "type": "integer" },
+        "medication": { "type": "integer" }, "management": { "type": "integer" }, "monitoring": { "type": "integer" }
+      }
+    },
+    "totalScore": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "criticalErrors": { "type": "array", "items": { "type": "string" } },
+    "passed": { "type": "boolean" },
+    "example": { "type": "boolean" }
+  }
+}
